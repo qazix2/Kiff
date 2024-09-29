@@ -53,8 +53,8 @@ def translate_message(message):
     if not translations:
         bot.reply_to(message, "Please upload an Excel file with translations first.")
         return
-    ST = split(message.text.lower()) 
-    search_term = "".join(ST[1:len(ST)])
+
+    search_term = message.text.lower()
     results = [f"{word} - {translation}" for word, translation in translations.items() if search_term in word]
     
     if results:
@@ -66,4 +66,5 @@ def translate_message(message):
 
 if __name__ == '__main__':
     bot.polling(none_stop=True)
+
 
